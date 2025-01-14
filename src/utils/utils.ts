@@ -45,7 +45,28 @@ export const timeAgo = (timestamp: Date) => {
   return value;
 };
 
+export function dashToCamelCase (str: string) {
+  return str.replace(/-([a-z])/g, (match, letter) => letter.toUpperCase());
+}
+
+export function dashToSentenceCase (input: string): string {
+  return input
+    .toLowerCase() // Convert all characters to lowercase
+    .replace(/-/g, ' ') // Replace dashes with spaces
+    .replace(/^\w/, (c) => c.toUpperCase()); // Capitalize the first letter
+}
+
+export const isArrayArray = (x: string[] | string[][]): x is string[][] => Array.isArray(x[0])
+
+export function matchSubString (target: string, searchValue: string) {
+  return target.toLowerCase().includes(searchValue.toLowerCase())
+} 
+
 export default {
   darkenHexColor,
-  timeAgo,
+  timeAgo, 
+  dashToCamelCase,
+  isArrayArray,
+  dashToSentenceCase,
+  matchSubString
 }

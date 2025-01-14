@@ -1,10 +1,11 @@
-import ServiceDetailSheet from "@/components/Dashboard/service-detail-sheet"
-import {IoHammerOutline, TbBath, TbLogicAnd, TbRazor, TbShovel} from "@/components/icons/Tabler.icons"
+import ServiceManageSheet from "@/components/Dashboard/service-manage-sheet"
 import {Badge} from "@/components/ui/badge"
 import {cn} from "@/libs/cn"
-import {ServiceDetail, Services} from "@/types/app.type"
+import {Service, } from "@/types/app.type"
+import {ServiceIcons} from "@/utils/consts"
 import utils from "@/utils/utils"
-import {createSignal,  JSXElement, ParentProps, splitProps} from "solid-js"
+import {TbFlag3} from "solid-icons/tb"
+import {createSignal, ParentProps, splitProps} from "solid-js"
 import {Dynamic} from "solid-js/web"
 
 
@@ -39,19 +40,12 @@ export function BoardColumn (props: ParentProps<{
   )
 }
 
-const ServiceIcons: Record<Services, () => JSXElement> = {
-  gardening: () =>  <TbShovel size={15} />,
-  carpentry: () => <IoHammerOutline size={14} />,
-  plumbing: () => <TbBath size={13} />,
-  electrical: () => <TbLogicAnd size={14} />,
-  cleaning: () => <TbRazor size={14} />
-}
-
 export function Card(props: ParentProps<{
-  serviceData: ServiceDetail
+  serviceData: Service
 }>) {
   const [isOpen, setIsOpen] = createSignal(false)
   const [{serviceData}, others] = splitProps(props, ['serviceData'])
+
   return (
     <>
     <button
@@ -75,7 +69,7 @@ export function Card(props: ParentProps<{
               "ml-auto text-xs text-muted-foreground",
             )}
           >
-            {utils.timeAgo(serviceData.time)}
+              {utils.timeAgo(serviceData.requestTime)}
           </div>
         </div>
       </div>
@@ -83,20 +77,21 @@ export function Card(props: ParentProps<{
         {serviceData.description}
       </div>
       <div class="flex items-center gap-2">
-        <Badge variant='outline' class="gap-1.5">
-          <Dynamic component={ServiceIcons[serviceData.type]} />
+          <Badge variant='outline' class="gap-1.5 pl-2">
+            <Dynamic component={ServiceIcons[serviceData.label]} />
           <span class="inline-block first-letter:uppercase">
-          {serviceData.type}
+              {serviceData.label}
           </span>
         </Badge>
         <Badge urgency={serviceData.urgency}>
+            <TbFlag3 size={16} />
           <span class="inline-block first-letter:uppercase">
             {serviceData.urgency}
           </span>
         </Badge>
       </div>
     </button>
-      <ServiceDetailSheet isOpen={isOpen()} setIsOpen={setIsOpen} serviceData={serviceData} />
+      <ServiceManageSheet isOpen={isOpen()} setIsOpen={setIsOpen} serviceData={serviceData} />
     </>
   )
 }

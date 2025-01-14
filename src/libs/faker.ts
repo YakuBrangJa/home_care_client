@@ -1,17 +1,19 @@
-import {ServiceDetail, Worker} from '@/types/app.type';
+import {Service, Worker} from '@/types/app.type';
+import {LABEL_LIST, STATUS_LIST, URGENCY_LIST, WORKER_STATUS_LIST} from '@/utils/const';
 import {faker} from '@faker-js/faker';
 
 
 
-export function createRandomServiceRequests (): ServiceDetail {
+export function createRandomServiceRequests (): Service {
   return {
     _id: faker.string.uuid(),
-    type: faker.helpers.arrayElement(['gardening' , 'carpentry' , 'plumbing' , 'electrical' , 'cleaning']),
+    label: faker.helpers.arrayElement(['gardening', 'carpentry', 'plumbing', 'electrical', 'cleaning']),
     subject: faker.lorem.sentence({min: 3, max: 13}),
     description: faker.lorem.paragraph({min: 3, max: 12}),
-    urgency: faker.helpers.arrayElement(['low' , 'medium' , 'high']),
-    status: faker.helpers.arrayElement(['pending' , 'assigned' , 'in_progress' , 'completed' , 'cancelled']),
-    time: faker.date.anytime(),
+    urgency: faker.helpers.arrayElement(URGENCY_LIST),
+    status: faker.helpers.arrayElement(STATUS_LIST),
+    requestTime: faker.date.past(),
+    endTime: faker.date.recent(),
     customerInfo: {
       firstname: faker.person.firstName(),
       lastname: faker.person.lastName(),
@@ -30,12 +32,15 @@ export function generateRandomWorker(): Worker {
     _id: faker.string.uuid(),
     firstname: faker.person.firstName(),
     lastname: faker.person.lastName(),
-    expertise: faker.helpers.arrayElement(['gardening', 'carpentry', 'plumbing', 'electrical', 'cleaning']),
+    birthdate: faker.date.birthdate(),
     phone: faker.phone.number(),
     email: faker.internet.email(),
     address: faker.location.streetAddress({
       useFullAddress: true
     }),
-    status: faker.helpers.arrayElement(['busy' , 'available' , 'on_leave' , 'off_shift']),
+    expertise: faker.helpers.arrayElement(LABEL_LIST),
+    profileImgUrl: faker.image.avatar(),
+    time: faker.date.past(),
+    status: faker.helpers.arrayElement(WORKER_STATUS_LIST),
   }
 }

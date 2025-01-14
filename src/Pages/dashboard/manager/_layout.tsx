@@ -1,5 +1,6 @@
+import ProfileMenu from '@/components/Dashboard/profile-menu'
 import {SideNav} from '@/components/Dashboard/side-nav'
-import {TbInbox,TbUsers} from '@/components/icons/Tabler.icons'
+import {TbInbox, TbUserCircle, TbUsers} from '@/components/icons/Tabler.icons'
 import {AccountSwitcher} from '@/components/MailUI/account-switcher'
 import {Resizable, ResizableHandle, ResizablePanel} from '@/components/ui/resizable'
 import {Separator} from '@/components/ui/separator'
@@ -28,7 +29,7 @@ function Layout(props: ParentProps) {
           collapsible={false}
           onCollapse={(e) => setIsCollapsed(e === 0)}
           onExpand={() => setIsCollapsed(false)}
-          class={cn(
+          class={cn('bg-muted',
             isCollapsed() &&
             "min-w-[50px] transition-all duration-300 ease-in-out",
           )}
@@ -37,7 +38,10 @@ function Layout(props: ParentProps) {
               <img src='../../../../public/HomeCare-logo-lg.png' width={140} />
           </div>
           <Separator />
-          <AccountSwitcher isCollapsed={false} />
+          {/* <AccountSwitcher isCollapsed={false} /> */}
+          <div class='px-4 py-2'>
+            <ProfileMenu />
+          </div>
           <SideNav
             isCollapsed={false}
             links={[
@@ -47,32 +51,20 @@ function Layout(props: ParentProps) {
                 label: "128",
                 icon: (<TbInbox size={18} />),
               },
-              // {
-              //   href: '/dashboard/manager/service-history',
-              //   title: "Services history",
-              //   label: "9",
-              //   icon: <HiOutlineClipboardDocumentList size={18} />,
-              // },
               {
                 href: '/dashboard/manager/manage-workers',
-                title: "Workers",
+                title: "Manage Workers",
                 label: "",
                 icon: <TbUsers size={18} />,
               },
+              // {
+              //   href: '/dashboard/manager/profile',
+              //   title: "Manager Profile",
+              //   label: "",
+              //   icon: <TbUserCircle size={19} />,
+              // },
             ]}
           />
-          {/* <Separator />
-          <SideNav
-            isCollapsed={false}
-            links={[
-              {
-                href: '/dashboard/manager/manage-workers',
-                title: "Workers",
-                label: "",
-                icon: <TbUsers size={18} />,
-              },
-            ]}
-          /> */}
         </ResizablePanel>
         <ResizableHandle withHandle />
         <ResizablePanel initialSize={sizes()[1] ?? 0.8} minSize={0.8} class="flex flex-col h-[100vh]">

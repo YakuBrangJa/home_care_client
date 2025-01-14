@@ -19,9 +19,15 @@ export const badgeVariants = cva(
 				outline: "text-foreground py-[0.2rem] bg-background",
 			},
       urgency: {
-        low: 'border-transparent bg-gray-200/80 text-secondary-foreground hover:bg-secondary/80',
-        medium: 'border-transparent bg-warning/50 text-secondary-foreground',
-        high: 'border-transparent bg-[#E5666D77] text-secondary-foreground',
+        low: 'border-transparent bg-[#5599dc55] text-secondary-foreground pl-1.5 px-2',
+        medium: 'border-transparent bg-[#AF7AC555] text-secondary-foreground pl-1.5 px-2',
+        high: 'border-transparent bg-[#E74C3C55] text-secondary-foreground pl-1.5 px-2',
+      },
+      workerStatus: {
+        'assigned': 'rounded-md border-[#5599dc99] text-[#5599dc] font-normal px-2',
+        'on-site': 'rounded-md border-[#E74C3C99] text-[#E74C3C] font-normal px-2',
+        available: 'rounded-md border-primary/60 text-primary font-normal px-2',
+      // 'off-shift': 'rounded-md border-[#AF7AC599] text-[#AF7AC5] font-normal px-2',
       }
 		},
 		defaultVariants: {
@@ -33,14 +39,15 @@ export const badgeVariants = cva(
 export const Badge = (
 	props: ComponentProps<"div"> & VariantProps<typeof badgeVariants>,
 ) => {
-	const [local, rest] = splitProps(props, ["class", "variant", 'urgency']);
+  const [local, rest] = splitProps(props, ["class", "variant", 'urgency', 'workerStatus']);
 
 	return (
 		<div
 			class={cn(
 				badgeVariants({
 					variant: local.variant,
-          urgency: local.urgency
+          urgency: local.urgency,
+          workerStatus: local.workerStatus,
 				}),
 				local.class,
 			)}

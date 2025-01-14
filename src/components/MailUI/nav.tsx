@@ -44,7 +44,7 @@ export const Nav = (props: Props) => {
 									)}
 								>
 									<div class="mr-2">{item.icon}</div>
-									{item.title}
+                  {item.label}
 									{item.label && (
 										<span
 											class={cn(
@@ -71,10 +71,10 @@ export const Nav = (props: Props) => {
 									)}
 								>
 									{item.icon}
-									<span class="sr-only">{item.title}</span>
+                  <span class="sr-only">{item.label}</span>
 								</TooltipTrigger>
 								<TooltipContent class="flex items-center gap-4">
-									{item.title}
+                  {item.label}
 									<Show when={item.label}>
 										<span class="ml-auto text-muted-foreground">
 											{item.label}

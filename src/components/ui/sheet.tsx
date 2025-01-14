@@ -131,7 +131,7 @@ export const SheetFooter = (props: ComponentProps<"div">) => {
 	return (
 		<div
 			class={cn(
-				"flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
+        "",
 				local.class,
 			)}
 			{...rest}

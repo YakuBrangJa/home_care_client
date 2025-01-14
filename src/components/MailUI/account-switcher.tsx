@@ -30,7 +30,7 @@ export const AccountSwitcher = (props: Props) => {
 			)}
 			class={cn(
 				"flex h-[52px] items-center justify-center",
-				props.isCollapsed ? "h-[52px]" : "px-2",
+        props.isCollapsed ? "h-[52px]" : "px-4",
 			)}
 			placement="bottom-start"
 			disallowEmptySelection

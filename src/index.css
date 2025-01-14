@@ -101,11 +101,11 @@
 }
 .custom-scroll {
   /* overflow: overlay; */
-  /* scrollbar-width: thin; */
+  scrollbar-width: thin;
   scrollbar-color: #dddddd transparent;
 }
 
 .custom-scroll::-webkit-scrollbar {
-  width: 5px;
+  width: 3px;
   height: 5px;
 }
