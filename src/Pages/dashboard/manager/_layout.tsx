@@ -1,7 +1,6 @@
 import ProfileMenu from '@/components/Dashboard/profile-menu'
 import {SideNav} from '@/components/Dashboard/side-nav'
-import {TbInbox, TbUserCircle, TbUsers} from '@/components/icons/Tabler.icons'
-import {AccountSwitcher} from '@/components/MailUI/account-switcher'
+import {TbInbox, TbUsers} from '@/components/icons/Tabler.icons'
 import {Resizable, ResizableHandle, ResizablePanel} from '@/components/ui/resizable'
 import {Separator} from '@/components/ui/separator'
 import {cn} from '@/libs/cn'
@@ -29,7 +28,7 @@ function Layout(props: ParentProps) {
           collapsible={false}
           onCollapse={(e) => setIsCollapsed(e === 0)}
           onExpand={() => setIsCollapsed(false)}
-          class={cn('bg-muted',
+          class={cn('',
             isCollapsed() &&
             "min-w-[50px] transition-all duration-300 ease-in-out",
           )}

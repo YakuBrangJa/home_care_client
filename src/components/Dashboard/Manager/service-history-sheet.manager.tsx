@@ -5,18 +5,6 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@components/ui/sheet";
-import type {AlertDialogTriggerProps} from "@kobalte/core/alert-dialog";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogClose,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@components/ui/alert-dialog";
 import {Separator} from "@/components/ui/separator"
 import {CloseButton} from "@kobalte/core/dialog"
 import {IoHammerOutline, TbArrowBarRight, TbBath, TbCalendarEvent, TbCircleCheck, TbFlag3, TbLogicAnd, TbRazor, TbShovel, TbTool} from "@/components/icons/Tabler.icons"
@@ -27,7 +15,8 @@ import {For, JSXElement, ParentProps, Setter, Show, splitProps} from "solid-js";
 import {Service, ServiceLabel, } from "@/types/app.type";
 import {Badge} from "@/components/ui/badge";
 import {Tabs, TabsContent, TabsIndicator, TabsList, TabsTrigger} from "@/components/ui/tabs";
-import {TbTrash} from "solid-icons/tb";
+import CancelServiceDialog from "@/components/Dashboard/Manager/cancel-service";
+import {InfoListItem} from "@/components/Dashboard/service-detail-components";
 
 const ServiceIcons: Record<ServiceLabel, () => JSXElement> = {
   gardening: () => <TbShovel size={16} />,
@@ -51,7 +40,7 @@ const ServiceHistorySheet = (props: {
     >
       <SheetContent
         backdropOpacity={10}
-        class="sm:!max-w-[34rem] !h-[calc(100vh-2rem)] m-4 rounded-lg pb-2 shadow-lg">
+        class="sm:!max-w-[32rem] !h-[calc(100vh-2rem)] m-4 rounded-lg pb-2 shadow-lg">
         <SheetHeader class="h-[3.35rem] flex flex-row items-center justify-between pl-5 pr-3">
           <SheetTitle>Service History</SheetTitle>
           <CloseButton class={buttonVariants({variant: 'ghost', size: 'icon', class: 'text-gray-500'})}>
@@ -179,7 +168,7 @@ const ServiceHistorySheet = (props: {
               <p class="text-[0.85rem] text-muted-foreground px-4 py-3 border rounded-xl leading-[1.35rem]">{serviceData.description}</p>
             </div>
             <SheetFooter class="px-7 pt-2 flex justify-end">
-              <DeleteDialog />
+              <CancelServiceDialog />
             </SheetFooter>
           </TabsContent>
         </Tabs>
@@ -188,50 +177,6 @@ const ServiceHistorySheet = (props: {
   );
 };
 
-
-function InfoListItem (props: ParentProps<{
-  label: string
-  icon: JSXElement
-}>) {
-  return (
-    <div class="flex items-center gap-2">
-      <div class="text-[0.825rem] flex items-center gap-2 w-[10rem] text-muted-foreground">
-        {props.icon}
-        {props.label}
-      </div>
-      <div class="text-[0.825rem]">
-        {props.children}
-      </div>
-    </div>
-  )
-}
-
-const DeleteDialog = () => {
-  return (
-    <AlertDialog>
-      <AlertDialogTrigger
-        as={(props: AlertDialogTriggerProps) => (
-          <Button variant="destructive" {...props} class="gap-2">
-            <TbTrash size={17} />
-            Delete History
-          </Button>
-        )}
-      />
-      <AlertDialogContent>
-        <AlertDialogHeader>
-          <AlertDialogTitle>Delete History?</AlertDialogTitle>
-          <AlertDialogDescription>
-            This will cancel the service process and will notify the user. You may provide reason for cancellation.
-          </AlertDialogDescription>
-        </AlertDialogHeader>
-        <AlertDialogFooter>
-          <AlertDialogClose>Cancel</AlertDialogClose>
-          <AlertDialogAction variant="destructive">Continue</AlertDialogAction>
-        </AlertDialogFooter>
-      </AlertDialogContent>
-    </AlertDialog>
-  );
-};
 
 export default ServiceHistorySheet
 

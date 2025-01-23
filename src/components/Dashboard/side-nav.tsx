@@ -48,7 +48,7 @@ export const SideNav = (props: Props) => {
 									class={cn(
 										buttonVariants({ variant: "ghost", size: "icon" }),
 										"h-9 w-9",
-											"dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white",
+                    "bg-muted text-muted-foreground hover:bg-muted hover:text-white",
 									)}
 								>
 									{item.icon}

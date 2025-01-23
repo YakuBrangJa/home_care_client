@@ -1,3 +1,5 @@
+import {type} from "os"
+
 export type ServiceLabel = 'gardening' | 'carpentry' | 'plumbing' | 'electrical' | 'cleaning'
 
 export type Urgency = 'low' | 'medium'  | 'high'
@@ -14,9 +16,15 @@ export interface Service {
   urgency: Urgency
   status: ServiceStatus
   requestTime: Date
+  assignedTime?: Date,
   endTime?: Date,
   customerInfo: CustomerInfo
   assignedWorkers: Worker[]
+  manager?: {
+    _id: string,
+    name: string,
+    role?: string,
+  },
 }
 
 export type CustomerInfo = {

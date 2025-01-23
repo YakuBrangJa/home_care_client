@@ -63,7 +63,7 @@ import {LABEL_LIST, STATUS_LIST, URGENCY_LIST} from "@/utils/const";
 import utils from "@/utils/utils";
 import {createRandomServiceRequests} from "@/libs/faker";
 import {ColumnFilter, TableColumnHeader} from "@/components/Dashboard/table-controls";
-import ServiceHistorySheet from "@/components/Dashboard/service-history-sheet";
+import ServiceHistorySheet from "@/components/Dashboard/Manager/service-history-sheet.manager";
 
 
 const columns: ColumnDef<Service>[] = [

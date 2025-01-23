@@ -12,7 +12,13 @@ import {
 import {Button} from "@kobalte/core/button";
 import {TbSelector} from "@/components/icons/Tabler.icons";
 
-const ProfileMenu = () => {
+interface Props {
+  name: string,
+  role: string,
+  profileImgUrl: string,
+}
+
+const ProfileMenu = (props: Props) => {
   return (
     <DropdownMenu placement="bottom-start">
       <DropdownMenuTrigger

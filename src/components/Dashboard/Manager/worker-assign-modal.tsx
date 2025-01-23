@@ -15,7 +15,6 @@ import {Worker} from "@/types/app.type";
 import {IoCloseOutline} from "@/components/icons/Ion.icons";
 import {Separator} from "@/components/ui/separator";
 import {DialogTriggerProps} from "@kobalte/core/dialog";
-import {FiPlus} from "solid-icons/fi";
 import {FaSolidPersonCirclePlus} from "solid-icons/fa";
 
 const randomWorkers = Array.from({length: 30}, generateRandomWorker)

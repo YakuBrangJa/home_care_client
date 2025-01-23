@@ -1,9 +1,14 @@
-import {Route} from "@solidjs/router"
+import Layout from "@/Pages/dashboard/worker/_layout"
+import TaskHistory from "@/Pages/dashboard/worker/task-history"
+import Tasks from "@/Pages/dashboard/worker/worker-tasks"
+import {Navigate, Route} from "@solidjs/router"
 
 function WorkerPage() {
   return (
-    <Route path='worker'>
-      <Route />
+    <Route path='worker' component={Layout}>
+      <Route path="/" component={() => <Navigate href='/dashboard/worker/tasks' />} />
+      <Route path="/tasks" component={Tasks} />
+      <Route path="/task-history" component={TaskHistory} />
     </Route>
   )
 }

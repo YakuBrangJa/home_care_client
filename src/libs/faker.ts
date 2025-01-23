@@ -3,7 +3,6 @@ import {LABEL_LIST, STATUS_LIST, URGENCY_LIST, WORKER_STATUS_LIST} from '@/utils
 import {faker} from '@faker-js/faker';
 
 
-
 export function createRandomServiceRequests (): Service {
   return {
     _id: faker.string.uuid(),
@@ -13,6 +12,7 @@ export function createRandomServiceRequests (): Service {
     urgency: faker.helpers.arrayElement(URGENCY_LIST),
     status: faker.helpers.arrayElement(STATUS_LIST),
     requestTime: faker.date.past(),
+    assignedTime: faker.date.past(),
     endTime: faker.date.recent(),
     customerInfo: {
       firstname: faker.person.firstName(),
@@ -23,7 +23,11 @@ export function createRandomServiceRequests (): Service {
         useFullAddress: true
       }),
     },
-    assignedWorkers: Array.from({length: Math.floor(Math.random() * 4)}, generateRandomWorker)
+    assignedWorkers: Array.from({length: Math.floor(Math.random() * 4)}, generateRandomWorker),
+    manager: {
+      _id: faker.string.uuid(),
+      name: faker.person.firstName() + ' ' + faker.person.lastName()
+    }
   };
 }
 

@@ -1,5 +1,5 @@
-import ManageWorkerTable from "@/components/Dashboard/manage-worker-table"
-import WorkerSignupModal from "@/components/Dashboard/worker-signup-modal"
+import ManageWorkerTable from "@/components/Dashboard/Manager/manage-worker-table.manager"
+import WorkerSignupModal from "@/components/Dashboard/Manager/worker-signup-modal"
 
 function ManageWorker() {
   return (

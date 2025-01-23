@@ -1,12 +1,12 @@
 import {Separator} from "@/components/ui/separator";
 import {Tabs, TabsContent, TabsIndicator, TabsList, TabsTrigger} from "@/components/ui/tabs";
 import {TbClipboardText, TbLayoutGrid} from "@/components/icons/Tabler.icons";
-import {BoardColumn, Card} from "@/components/Dashboard/service-board";
+import {BoardColumn, Card} from "@/components/Dashboard/Manager/service-board.manager";
 import {createRandomServiceRequests} from "@/libs/faker";
 import {createMemo, For, onMount} from "solid-js";
 import {Service} from "@/types/app.type";
 import utils from "@/utils/utils";
-import ServiceHistoryTable from "@/components/Dashboard/service-history-table";
+import ServiceHistoryTable from "@/components/Dashboard/Manager/service-history-table.manager";
 
 const serviceRequests = Array.from({length: 100}, createRandomServiceRequests);
 

@@ -1,4 +1,4 @@
-import ServiceManageSheet from "@/components/Dashboard/service-manage-sheet"
+import ServiceManageSheet from "@/components/Dashboard/Manager/service-manage-sheet.manager"
 import {Badge} from "@/components/ui/badge"
 import {cn} from "@/libs/cn"
 import {Service, } from "@/types/app.type"
@@ -16,15 +16,15 @@ export function BoardColumn (props: ParentProps<{
 }>) {
   return (
     <div class='flex-1 flex flex-col items-stretch'>
-      <div class={cn("py-[0.5rem] px-4 pr-3 mx-4 rounded-md flex items-center justify-between", )} 
+      <div class={cn("py-[0.5rem] px-4 pr-3 mx-4 rounded-md flex items-center justify-between",)}
         style={{
           "background-color": props.tagColor + '44'
         }}
       >
-        <span 
+        <span
           class="text-sm font-semibold"
-        style={{
-        }}>
+          style={{
+          }}>
           {props.title}
         </span>
         <span class="rounded-md size-[1.4rem] text-sm flex items-center justify-center text-white"
@@ -34,13 +34,13 @@ export function BoardColumn (props: ParentProps<{
         >{props.count}</span>
       </div>
       <div class="mt-3 space-y-3 h-full  overflow-y-auto custom-scroll px-4 pt-1 pb-3">
-      {props.children}
+        {props.children}
       </div>
     </div>
   )
 }
 
-export function Card(props: ParentProps<{
+export function Card (props: ParentProps<{
   serviceData: Service
 }>) {
   const [isOpen, setIsOpen] = createSignal(false)
@@ -48,49 +48,49 @@ export function Card(props: ParentProps<{
 
   return (
     <>
-    <button
-      type="button"
-      class={cn(
-        "flex flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm shadow-sm transition-all hover:bg-accent",
-        isOpen() && "bg-muted",
-      )}
-      onClick={e => setIsOpen(true)}
-    >
-      <div class="flex w-full flex-col gap-1">
-        <div class="flex items-center">
-          <div class="flex items-center gap-2">
-            <div class="font-semibold line-clamp-1 max-w-[17rem]">{serviceData.subject}</div>
-            {/* {!item.read && (
+      <button
+        type="button"
+        class={cn(
+          "flex flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm shadow-sm transition-all hover:bg-accent",
+          isOpen() && "bg-muted",
+        )}
+        onClick={e => setIsOpen(true)}
+      >
+        <div class="flex w-full flex-col gap-1">
+          <div class="flex items-center">
+            <div class="flex items-center gap-2">
+              <div class="font-semibold line-clamp-1 max-w-[17rem]">{serviceData.subject}</div>
+              {/* {!item.read && (
               <span class="flex h-2 w-2 rounded-full bg-blue-600" />
             )} */}
-          </div>
-          <div
-            class={cn(
-              "ml-auto text-xs text-muted-foreground",
-            )}
-          >
+            </div>
+            <div
+              class={cn(
+                "ml-auto text-xs text-muted-foreground",
+              )}
+            >
               {utils.timeAgo(serviceData.requestTime)}
+            </div>
           </div>
         </div>
-      </div>
-      <div class="line-clamp-2 text-xs text-muted-foreground mt-1">
-        {serviceData.description}
-      </div>
-      <div class="flex items-center gap-2">
+        <div class="line-clamp-2 text-xs text-muted-foreground mt-1">
+          {serviceData.description}
+        </div>
+        <div class="flex items-center gap-2">
           <Badge variant='outline' class="gap-1.5 pl-2">
             <Dynamic component={ServiceIcons[serviceData.label]} />
-          <span class="inline-block first-letter:uppercase">
+            <span class="inline-block first-letter:uppercase">
               {serviceData.label}
-          </span>
-        </Badge>
-        <Badge urgency={serviceData.urgency}>
+            </span>
+          </Badge>
+          <Badge urgency={serviceData.urgency}>
             <TbFlag3 size={16} />
-          <span class="inline-block first-letter:uppercase">
-            {serviceData.urgency}
-          </span>
-        </Badge>
-      </div>
-    </button>
+            <span class="inline-block first-letter:uppercase">
+              {serviceData.urgency}
+            </span>
+          </Badge>
+        </div>
+      </button>
       <ServiceManageSheet isOpen={isOpen()} setIsOpen={setIsOpen} serviceData={serviceData} />
     </>
   )

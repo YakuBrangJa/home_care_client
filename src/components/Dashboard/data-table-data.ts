@@ -1,4 +1,4 @@
-import type {Task} from "./service-history-table";
+import type {Task} from "./service-history-table.manager";
 
 export const dataTable: Task[] = [
   {

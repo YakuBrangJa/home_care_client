@@ -17,9 +17,9 @@ import {For, JSXElement, ParentProps, Setter, Show, splitProps} from "solid-js";
 import {Service, ServiceLabel, } from "@/types/app.type";
 import {Badge} from "@/components/ui/badge";
 import {FiSave} from "@/components/icons/Fontawesome.icons";
-import CancelServiceDialog from "@/components/Dashboard/cancel-service";
-import WorkerAssignModal from "@/components/Dashboard/worker-assign-modal";
-import {FaSolidPersonCirclePlus} from "solid-icons/fa";
+import CancelServiceDialog from "@/components/Dashboard/Manager/cancel-service";
+import WorkerAssignModal from "@/components/Dashboard/Manager/worker-assign-modal";
+import {InfoListItem} from "@/components/Dashboard/service-detail-components";
 
 const ServiceIcons: Record<ServiceLabel, () => JSXElement> = {
   gardening: () => <TbShovel size={16} />,
@@ -43,7 +43,7 @@ const ServiceManageSheet = (props: {
     >
       <SheetContent
         backdropOpacity={10}
-        class="sm:!max-w-[34rem] !h-[calc(100vh-2rem)] m-4 rounded-lg pb-2 shadow-lg">
+        class="sm:!max-w-[32rem] !h-[calc(100vh-2rem)] m-4 rounded-lg pb-2 shadow-lg">
         <SheetHeader class="h-[3.35rem] flex flex-row items-center justify-between pl-5 pr-3">
           <SheetTitle>Request Details</SheetTitle>
           <CloseButton class={buttonVariants({variant: 'ghost', size: 'icon', class: 'text-gray-500'})}>
@@ -176,22 +176,7 @@ const ServiceManageSheet = (props: {
 };
 
 
-function InfoListItem (props: ParentProps<{
-  label: string
-  icon: JSXElement
-}>) {
-  return (
-    <div class="flex items-center gap-2">
-      <div class="text-[0.825rem] flex items-center gap-2 w-[10rem] text-muted-foreground">
-        {props.icon}
-        {props.label}
-      </div>
-      <div class="text-[0.825rem]">
-        {props.children}
-      </div>
-    </div>
-  )
-}
+
 
 export default ServiceManageSheet
 
