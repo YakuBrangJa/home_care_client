@@ -1,9 +1,9 @@
-import {ServiceLabel} from "@/types/app.type"
+import {ServiceType} from "@/types/app.type"
 import {JSXElement} from "solid-js"
 import {IoHammerOutline, TbBath, TbLogicAnd, TbRazor, TbShovel} from "@/components/icons/Tabler.icons"
 
 
-export const ServiceIcons: Record<ServiceLabel, () => JSXElement> = {
+export const ServiceIcons: Record<ServiceType, () => JSXElement> = {
   gardening: () => <TbShovel size={15} />,
   carpentry: () => <IoHammerOutline size={14} />,
   plumbing: () => <TbBath size={13} />,

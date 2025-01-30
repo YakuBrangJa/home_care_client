@@ -1,12 +1,12 @@
 import {Service, Worker} from '@/types/app.type';
-import {LABEL_LIST, STATUS_LIST, URGENCY_LIST, WORKER_STATUS_LIST} from '@/utils/const';
+import {SERVICE_TYPES, STATUS_LIST, URGENCY_LIST, WORKER_STATUS_LIST} from '@/utils/const';
 import {faker} from '@faker-js/faker';
 
 
 export function createRandomServiceRequests (): Service {
   return {
     _id: faker.string.uuid(),
-    label: faker.helpers.arrayElement(['gardening', 'carpentry', 'plumbing', 'electrical', 'cleaning']),
+    serviceType: faker.helpers.arrayElement(['gardening', 'carpentry', 'plumbing', 'electrical', 'cleaning']),
     subject: faker.lorem.sentence({min: 3, max: 13}),
     description: faker.lorem.paragraph({min: 3, max: 12}),
     urgency: faker.helpers.arrayElement(URGENCY_LIST),
@@ -42,7 +42,7 @@ export function generateRandomWorker(): Worker {
     address: faker.location.streetAddress({
       useFullAddress: true
     }),
-    expertise: faker.helpers.arrayElement(LABEL_LIST),
+    expertise: faker.helpers.arrayElement(SERVICE_TYPES),
     profileImgUrl: faker.image.avatar(),
     time: faker.date.past(),
     status: faker.helpers.arrayElement(WORKER_STATUS_LIST),

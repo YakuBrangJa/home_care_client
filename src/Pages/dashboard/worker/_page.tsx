@@ -1,6 +1,6 @@
 import Layout from "@/Pages/dashboard/worker/_layout"
-import TaskHistory from "@/Pages/dashboard/worker/task-history"
-import Tasks from "@/Pages/dashboard/worker/worker-tasks"
+import TaskHistory from "@/Pages/dashboard/worker/task-history.page"
+import Tasks from "@/Pages/dashboard/worker/worker-tasks.page"
 import {Navigate, Route} from "@solidjs/router"
 
 function WorkerPage() {

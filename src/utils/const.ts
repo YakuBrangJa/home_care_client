@@ -1,9 +1,9 @@
-import {ServiceLabel, ServiceStatus, Urgency, WorkerStatus} from "@/types/app.type"
+import {ServiceType, ServiceStatus, Urgency, WorkerStatus} from "@/types/app.type"
 
 export const STATUS_LIST: ServiceStatus[] = ["pending", "assigned", "in-progress", "completed", "cancelled"]
 export const URGENCY_LIST: Urgency[] = ['low', 'medium', 'high']
 
-export const LABEL_LIST: ServiceLabel[] = ['gardening', 'carpentry', 'plumbing', 'electrical', 'cleaning']
+export const SERVICE_TYPES: ServiceType[] = ['gardening', 'carpentry', 'plumbing', 'electrical', 'cleaning']
 
 export const WORKER_STATUS_LIST: WorkerStatus[] = ['assigned', 'on-site', 'available']
 

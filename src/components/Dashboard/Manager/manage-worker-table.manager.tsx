@@ -52,7 +52,7 @@ import {Worker} from "@/types/app.type";
 import {cn} from "@/libs/cn";
 import {ServiceIcons} from "@/utils/consts";
 import {Dynamic} from "solid-js/web";
-import {LABEL_LIST, WORKER_STATUS_LIST} from "@/utils/const";
+import {SERVICE_TYPES, WORKER_STATUS_LIST} from "@/utils/const";
 import utils, {matchSubString} from "@/utils/utils";
 import {generateRandomWorker} from "@/libs/faker";
 import {ColumnFilter, TableColumnHeader} from "@/components/Dashboard/table-controls";
@@ -238,7 +238,7 @@ const ManageWorkerTable = () => {
               }
             />
           </TextFieldRoot>
-          <ColumnFilter columnName="expertise" buttonLabel="Expertise" options={LABEL_LIST} table={table} />
+          <ColumnFilter columnName="expertise" buttonLabel="Expertise" options={SERVICE_TYPES} table={table} />
           <ColumnFilter columnName="status" buttonLabel="Status" options={WORKER_STATUS_LIST} table={table} />
           {/* </div> */}
           {/* <div class="flex items-center gap-2"> */}

@@ -278,7 +278,7 @@ const columns: ColumnDef<Task>[] = [
     ),
     cell: (props) => (
       <div class="flex space-x-2">
-        <Badge variant="outline">{props.row.original.label}</Badge>
+        <Badge variant="outline">{props.row.original.serviceType}</Badge>
         <span class="max-w-[250px] truncate font-medium">
           {props.row.getValue("title")}
         </span>

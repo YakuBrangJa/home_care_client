@@ -59,7 +59,7 @@ import {format} from "date-fns";
 import {cn} from "@/libs/cn";
 import {ServiceIcons} from "@/utils/consts";
 import {Dynamic} from "solid-js/web";
-import {LABEL_LIST, STATUS_LIST, URGENCY_LIST} from "@/utils/const";
+import {SERVICE_TYPES, STATUS_LIST, URGENCY_LIST} from "@/utils/const";
 import utils from "@/utils/utils";
 import {createRandomServiceRequests} from "@/libs/faker";
 import {ColumnFilter, TableColumnHeader} from "@/components/Dashboard/table-controls";
@@ -75,9 +75,9 @@ const columns: ColumnDef<Service>[] = [
       <div class="">
         <Badge variant="outline" class="pl-2">
           <span class="text-gray-600">
-            <Dynamic component={ServiceIcons[props.row.original.label]} />
+            <Dynamic component={ServiceIcons[props.row.original.serviceType]} />
           </span>
-          {props.row.original.label}
+          {props.row.original.serviceType}
         </Badge>
       </div>
     ),
@@ -260,7 +260,7 @@ const TaskHistoryTable = () => {
               }
             />
           </TextFieldRoot>
-          <ColumnFilter columnName="label" buttonLabel="Service" options={LABEL_LIST} table={table} />
+          <ColumnFilter columnName="label" buttonLabel="Service" options={SERVICE_TYPES} table={table} />
           <ColumnFilter columnName="urgency" buttonLabel="Urgency" options={URGENCY_LIST} table={table} />
           <ColumnFilter columnName="status" buttonLabel="Status" options={STATUS_LIST.filter(v => v === 'completed' || v === 'cancelled')} table={table} />
         </div>

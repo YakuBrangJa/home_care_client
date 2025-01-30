@@ -55,10 +55,10 @@ export const SideNav = (props: Props) => {
                   <span class="sr-only">{item.title}</span>
 								</TooltipTrigger>
 								<TooltipContent class="flex items-center gap-4">
-                  {item.label}
-									<Show when={item.label}>
+                  {item.serviceType}
+                  <Show when={item.serviceType}>
 										<span class="ml-auto text-muted-foreground">
-											{item.label}
+                      {item.serviceType}
 										</span>
 									</Show>
 								</TooltipContent>

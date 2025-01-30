@@ -78,9 +78,9 @@ export function Card (props: ParentProps<{
         </div>
         <div class="flex items-center gap-2">
           <Badge variant='outline' class="gap-1.5 pl-2">
-            <Dynamic component={ServiceIcons[serviceData.label]} />
+            <Dynamic component={ServiceIcons[serviceData.serviceType]} />
             <span class="inline-block first-letter:uppercase">
-              {serviceData.label}
+              {serviceData.serviceType}
             </span>
           </Badge>
           <Badge urgency={serviceData.urgency}>

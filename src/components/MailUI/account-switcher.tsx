@@ -48,7 +48,7 @@ export const AccountSwitcher = (props: Props) => {
 						<>
 							{state.selectedOption().icon}
 							<div class={cn("ml-2", props.isCollapsed && "hidden")}>
-								{state.selectedOption().label}
+                {state.selectedOption().serviceType}
 							</div>
 						</>
 					)}

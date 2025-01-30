@@ -12,7 +12,7 @@ import {TextField, TextFieldLabel, TextFieldRoot} from "@/components/ui/textfiel
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select";
 import {TextArea} from "@/components/ui/textarea";
 import {cn} from "@/libs/cn";
-import {LABEL_LIST} from "@/utils/const";
+import {SERVICE_TYPES} from "@/utils/const";
 import {TbFolderUp, TbPlus} from "solid-icons/tb";
 import {DialogTriggerProps} from "@kobalte/core/dialog";
 
@@ -89,7 +89,7 @@ const WorkerSignupForm = (props: {
         <div class="grid gap-2">
           <Label>Expertise</Label>
           <Select
-            options={LABEL_LIST}
+            options={SERVICE_TYPES}
             placeholder="Area"
             itemComponent={(props) => (
               <SelectItem item={props.item}>{props.item.rawValue}</SelectItem>

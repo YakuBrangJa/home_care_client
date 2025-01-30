@@ -48,9 +48,9 @@ function TaskCard (props: TaskCardProps) {
       </div>
       <div class="flex items-center gap-2 mt-1">
         <Badge variant='outline' class="gap-1.5 pl-2">
-          <Dynamic component={ServiceIcons[task.label]} />
+          <Dynamic component={ServiceIcons[task.serviceType]} />
           <span class="inline-block first-letter:uppercase">
-            {task.label}
+            {task.serviceType}
           </span>
         </Badge>
         <Badge urgency={task.urgency}>

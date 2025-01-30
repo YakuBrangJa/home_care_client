@@ -1,6 +1,6 @@
 import {type} from "os"
 
-export type ServiceLabel = 'gardening' | 'carpentry' | 'plumbing' | 'electrical' | 'cleaning'
+export type ServiceType = 'gardening' | 'carpentry' | 'plumbing' | 'electrical' | 'cleaning'
 
 export type Urgency = 'low' | 'medium'  | 'high'
 
@@ -10,7 +10,7 @@ export type WorkerStatus = 'assigned' | 'on-site' | 'available'
 
 export interface Service {
   _id: string,
-  label: ServiceLabel
+  serviceType: ServiceType
   subject: string,
   description: string,
   urgency: Urgency
@@ -45,6 +45,6 @@ export type Worker =  {
   address: string
   time: Date,
   profileImgUrl: string,
-  expertise: ServiceLabel
+  expertise: ServiceType
   status: WorkerStatus
 }

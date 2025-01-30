@@ -1,6 +1,6 @@
 import Layout from "@/Pages/dashboard/manager/_layout"
-import ManageWorker from "@/Pages/dashboard/manager/manage-worker"
-import ServiceRequests from "@/Pages/dashboard/manager/manage-services"
+import ManageWorker from "@/Pages/dashboard/manager/manage-worker.page"
+import ServiceRequests from "@/Pages/dashboard/manager/manage-services.page"
 import {Navigate, Route} from "@solidjs/router"
 
 function ManagerPage() {

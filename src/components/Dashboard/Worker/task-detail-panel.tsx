@@ -4,7 +4,7 @@ import {IoHammerOutline, TbArrowBarRight, TbBath, TbCalendarEvent, TbCircleCheck
 import {Dynamic} from "solid-js/web"
 import {format} from "date-fns"
 import {For, JSXElement, ParentProps, Setter, Show, splitProps} from "solid-js";
-import {Service, ServiceLabel, } from "@/types/app.type";
+import {Service, ServiceType, } from "@/types/app.type";
 import {Badge} from "@/components/ui/badge";
 import {InfoListItem} from "@/components/Dashboard/service-detail-components";
 import {useWorkerTask} from "@/context/worker-dashboard.contex";
@@ -14,7 +14,7 @@ import {TbPlayerPlayFilled, TbPlayerRecordFilled, TbTrashX} from "solid-icons/tb
 import {Tooltip, TooltipContent, TooltipTrigger} from "@/components/ui/tooltip";
 import {TooltipTriggerProps} from "@kobalte/core/tooltip";
 
-const ServiceIcons: Record<ServiceLabel, () => JSXElement> = {
+const ServiceIcons: Record<ServiceType, () => JSXElement> = {
   gardening: () => <TbShovel size={16} />,
   carpentry: () => <IoHammerOutline size={15} />,
   plumbing: () => <TbBath size={15} />,
@@ -64,9 +64,9 @@ const TaskDetailPanel = () => {
           <div class="space-y-5 py-6 ">
             <InfoListItem label="Service" icon={<TbTool size={18} />}>
               <div class="text-sm flex items-center gap-2">
-                <Dynamic component={ServiceIcons[worker?.selected()?.label]} />
+                <Dynamic component={ServiceIcons[worker?.selected()?.serviceType]} />
                 <span class="inline-block first-letter:uppercase">
-                  {worker?.selected()?.label}
+                  {worker?.selected()?.serviceType}
                 </span>
               </div>
             </InfoListItem>

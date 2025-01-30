@@ -12,13 +12,13 @@ import {Button, buttonVariants} from "@/components/ui/button"
 import {Dynamic} from "solid-js/web"
 import {format} from "date-fns"
 import {For, JSXElement, ParentProps, Setter, Show, splitProps} from "solid-js";
-import {Service, ServiceLabel, } from "@/types/app.type";
+import {Service, ServiceType, } from "@/types/app.type";
 import {Badge} from "@/components/ui/badge";
 import {Tabs, TabsContent, TabsIndicator, TabsList, TabsTrigger} from "@/components/ui/tabs";
 import CancelServiceDialog from "@/components/Dashboard/Manager/cancel-service";
 import {InfoListItem} from "@/components/Dashboard/service-detail-components";
 
-const ServiceIcons: Record<ServiceLabel, () => JSXElement> = {
+const ServiceIcons: Record<ServiceType, () => JSXElement> = {
   gardening: () => <TbShovel size={16} />,
   carpentry: () => <IoHammerOutline size={15} />,
   plumbing: () => <TbBath size={15} />,
@@ -75,9 +75,9 @@ const ServiceHistorySheet = (props: {
             <div class="space-y-5 py-6 px-7">
               <InfoListItem label="Service" icon={<TbTool size={18} />}>
                 <div class="text-sm flex items-center gap-2">
-                  <Dynamic component={ServiceIcons[props.serviceData.label]} />
+                  <Dynamic component={ServiceIcons[props.serviceData.serviceType]} />
                   <span class="inline-block first-letter:uppercase">
-                    {props.serviceData.label}
+                    {props.serviceData.serviceType}
                   </span>
                 </div>
               </InfoListItem>

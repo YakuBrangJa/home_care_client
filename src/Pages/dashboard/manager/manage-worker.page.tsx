@@ -1,7 +1,7 @@
 import ManageWorkerTable from "@/components/Dashboard/Manager/manage-worker-table.manager"
 import WorkerSignupModal from "@/components/Dashboard/Manager/worker-signup-modal"
 
-function ManageWorker() {
+function ManageWorker () {
   return (
     <div>
       <div class="flex items-center justify-between px-4 py-2 h-[52px]">
