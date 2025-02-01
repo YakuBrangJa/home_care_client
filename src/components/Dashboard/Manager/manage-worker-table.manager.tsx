@@ -58,7 +58,7 @@ import {generateRandomWorker} from "@/libs/faker";
 import {ColumnFilter, TableColumnHeader} from "@/components/Dashboard/table-controls";
 
 const data = Array.from({length: 25}, generateRandomWorker);
-console.log(data)
+
 const columns: ColumnDef<Worker>[] = [
   {
     accessorKey: "_id",

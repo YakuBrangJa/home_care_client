@@ -17,7 +17,7 @@ import {For, JSXElement, ParentProps, Setter, Show, splitProps} from "solid-js";
 import {Service, ServiceType, } from "@/types/app.type";
 import {Badge} from "@/components/ui/badge";
 import {FiSave} from "@/components/icons/Fontawesome.icons";
-import CancelServiceDialog from "@/components/Dashboard/Manager/cancel-service";
+import CancelAlertDialog from "@/components/ui/cancel-alert-dialog";
 import WorkerAssignModal from "@/components/Dashboard/Manager/worker-assign-modal";
 import {InfoListItem} from "@/components/Dashboard/service-detail-components";
 
@@ -161,7 +161,10 @@ const ServiceManageSheet = (props: {
             </TextFieldRoot>
           </div>
           <SheetFooter class="px-7 pt-2 flex gap-3 justify-stretch">
-            <CancelServiceDialog />
+            <CancelAlertDialog
+              title="Cancel Service?"
+              description="This will cancel the service process and will notify the user. You may provide reason for cancellation"
+            />
             <WorkerAssignModal />
 
             {/* <Button class="flex-1">

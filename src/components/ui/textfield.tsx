@@ -25,7 +25,7 @@ export const TextFieldRoot = <T extends ValidComponent = "div">(
 	return <TextFieldPrimitive class={cn("space-y-1", local.class)} {...rest} />;
 };
 
-export const textfieldLabel = cva(
+export const fieldLabel = cva(
 	"text-sm data-[disabled]:cursor-not-allowed data-[disabled]:opacity-70 font-medium",
 	{
 		variants: {
@@ -45,39 +45,39 @@ export const textfieldLabel = cva(
 	},
 );
 
-type textFieldLabelProps<T extends ValidComponent = "label"> =
+type FieldLabelProps<T extends ValidComponent = "label"> =
 	TextFieldLabelProps<T> & {
 		class?: string;
 	};
 
-export const TextFieldLabel = <T extends ValidComponent = "label">(
-	props: PolymorphicProps<T, textFieldLabelProps<T>>,
+export const FieldLabel = <T extends ValidComponent = "label"> (
+  props: PolymorphicProps<T, FieldLabelProps<T>>,
 ) => {
-	const [local, rest] = splitProps(props as textFieldLabelProps, ["class"]);
+  const [local, rest] = splitProps(props as FieldLabelProps, ["class"]);
 
 	return (
 		<TextFieldPrimitive.Label
-			class={cn(textfieldLabel(), local.class)}
+      class={cn(fieldLabel(), local.class)}
 			{...rest}
 		/>
 	);
 };
 
-type textFieldErrorMessageProps<T extends ValidComponent = "div"> =
+type FieldErrorMessageProps<T extends ValidComponent = "div"> =
 	TextFieldErrorMessageProps<T> & {
 		class?: string;
 	};
 
-export const TextFieldErrorMessage = <T extends ValidComponent = "div">(
-	props: PolymorphicProps<T, textFieldErrorMessageProps<T>>,
+export const FieldErrorMessage = <T extends ValidComponent = "div"> (
+  props: PolymorphicProps<T, FieldErrorMessageProps<T>>,
 ) => {
-	const [local, rest] = splitProps(props as textFieldErrorMessageProps, [
+  const [local, rest] = splitProps(props as FieldErrorMessageProps, [
 		"class",
 	]);
 
 	return (
 		<TextFieldPrimitive.ErrorMessage
-			class={cn(textfieldLabel({ error: true }), local.class)}
+      class={cn(fieldLabel({error: true}), local.class)}
 			{...rest}
 		/>
 	);
@@ -98,7 +98,7 @@ export const TextFieldDescription = <T extends ValidComponent = "div">(
 	return (
 		<TextFieldPrimitive.Description
 			class={cn(
-				textfieldLabel({ description: true, label: false }),
+        fieldLabel({description: true, label: false}),
 				local.class,
 			)}
 			{...rest}
@@ -120,7 +120,7 @@ export const TextField = <T extends ValidComponent = "input">(
 	return (
 		<TextFieldPrimitive.Input
 			class={cn(
-				"flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-shadow file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-[1.5px] focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50",
+        "flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-shadow file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-[1.5px] focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 data-[invalid]:border-destructive",
 				local.class,
 			)}
 			{...rest}

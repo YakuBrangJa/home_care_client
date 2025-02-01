@@ -8,7 +8,7 @@ import {
 } from "@components/ui/dialog";
 import {Button, buttonVariants} from "@/components/ui/button";
 import {createSignal, For, JSX, Setter, Show, splitProps} from "solid-js";
-import {TextField, TextFieldLabel, TextFieldRoot} from "@/components/ui/textfield";
+import {TextField, FieldLabel, TextFieldRoot} from "@/components/ui/textfield";
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select";
 import {TextArea} from "@/components/ui/textarea";
 import {cn} from "@/libs/cn";
@@ -68,21 +68,21 @@ const WorkerSignupForm = (props: {
       <div class="mt-6 grid gap-6">
         <div class="grid grid-cols-2 gap-4">
           <TextFieldRoot class="">
-            <TextFieldLabel>First name</TextFieldLabel>
+            <FieldLabel>First name</FieldLabel>
             <TextField placeholder="First name" />
           </TextFieldRoot>
           <TextFieldRoot class="">
-            <TextFieldLabel>Last name</TextFieldLabel>
+            <FieldLabel>Last name</FieldLabel>
             <TextField placeholder="Last name" />
           </TextFieldRoot>
         </div>
         <div class="grid grid-cols-2 gap-4">
           <TextFieldRoot>
-            <TextFieldLabel>Phone</TextFieldLabel>
+            <FieldLabel>Phone</FieldLabel>
             <TextField type="tel" placeholder="" />
           </TextFieldRoot>
           <TextFieldRoot>
-            <TextFieldLabel>Email</TextFieldLabel>
+            <FieldLabel>Email</FieldLabel>
             <TextField type="mail" placeholder="" />
           </TextFieldRoot>
         </div>
@@ -106,7 +106,7 @@ const WorkerSignupForm = (props: {
         </div>
         <div class="grid gap-2">
           <TextFieldRoot>
-            <TextFieldLabel>Address</TextFieldLabel>
+            <FieldLabel>Address</FieldLabel>
             <TextArea placeholder="Your full address" />
           </TextFieldRoot>
         </div>

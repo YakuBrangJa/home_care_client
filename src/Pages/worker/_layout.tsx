@@ -45,19 +45,19 @@ function Layout (props: ParentProps) {
             isCollapsed={false}
             links={[
               {
-                href: '/dashboard/worker/tasks',
+                href: '/worker/tasks',
                 title: "Assigned Tasks",
                 label: "128",
                 icon: (<TbInbox size={18} />),
               },
               {
-                href: '/dashboard/worker/task-history',
+                href: '/worker/task-history',
                 title: "Task History",
                 label: "",
                 icon: <TbUsers size={18} />,
               },
               // {
-              //   href: '/dashboard/manager/profile',
+              //   href: '/manager/profile',
               //   title: "Manager Profile",
               //   label: "",
               //   icon: <TbUserCircle size={19} />,

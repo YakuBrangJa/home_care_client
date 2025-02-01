@@ -15,7 +15,7 @@ import {For, JSXElement, ParentProps, Setter, Show, splitProps} from "solid-js";
 import {Service, ServiceType, } from "@/types/app.type";
 import {Badge} from "@/components/ui/badge";
 import {Tabs, TabsContent, TabsIndicator, TabsList, TabsTrigger} from "@/components/ui/tabs";
-import CancelServiceDialog from "@/components/Dashboard/Manager/cancel-service";
+import CancelAlertDialog from "@/components/ui/cancel-alert-dialog";
 import {InfoListItem} from "@/components/Dashboard/service-detail-components";
 
 const ServiceIcons: Record<ServiceType, () => JSXElement> = {
@@ -168,7 +168,10 @@ const ServiceHistorySheet = (props: {
               <p class="text-[0.85rem] text-muted-foreground px-4 py-3 border rounded-xl leading-[1.35rem]">{serviceData.description}</p>
             </div>
             <SheetFooter class="px-7 pt-2 flex justify-end">
-              <CancelServiceDialog />
+              <CancelAlertDialog
+                title="Cancel Service?"
+                description="This will cancel the service process and will notify the user. You may provide reason for cancellation"
+              />
             </SheetFooter>
           </TabsContent>
         </Tabs>

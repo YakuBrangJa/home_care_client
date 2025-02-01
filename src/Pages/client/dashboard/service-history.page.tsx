@@ -2,14 +2,13 @@ import {Badge} from "@/components/ui/badge";
 import {cn} from "@/libs/cn";
 import {createRandomServiceRequests} from "@/libs/faker";
 import {ServiceIcons} from "@/utils/consts";
-import {A} from "@solidjs/router";
 import {format} from "date-fns";
 import {For} from "solid-js";
 import {Dynamic} from "solid-js/web";
 
 const data = Array.from({length: 10}, createRandomServiceRequests).filter(service => service.status === 'completed' || service.status === 'cancelled');
 
-function UserServiceHistory () {
+function ClientServiceHistory () {
   return (
     <div class="p-4">
       <h2 class="font-semibold">Request History</h2>
@@ -56,4 +55,4 @@ function UserServiceHistory () {
   )
 }
 
-export default UserServiceHistory
+export default ClientServiceHistory;

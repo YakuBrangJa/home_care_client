@@ -7,7 +7,7 @@ import {cn} from '@/libs/cn'
 import {cookieStorage, makePersisted} from '@solid-primitives/storage'
 import {createSignal, ParentProps} from 'solid-js'
 
-function Layout(props: ParentProps) {
+function Layout (props: ParentProps) {
   const [sizes, setSizes] = makePersisted(createSignal<number[]>([]), {
     name: "manager-nav",
     storage: cookieStorage,
@@ -34,7 +34,7 @@ function Layout(props: ParentProps) {
           )}
         >
           <div class='flex items-center h-[52px] px-4 py-2'>
-              <img src='../../../../public/HomeCare-logo-lg.png' width={140} />
+            <img src='../../../../public/HomeCare-logo-lg.png' width={140} />
           </div>
           <Separator />
           {/* <AccountSwitcher isCollapsed={false} /> */}
@@ -45,19 +45,19 @@ function Layout(props: ParentProps) {
             isCollapsed={false}
             links={[
               {
-                href: '/dashboard/manager/manage-services',
+                href: '/manager/manage-services',
                 title: "Mange Services",
                 label: "128",
                 icon: (<TbInbox size={18} />),
               },
               {
-                href: '/dashboard/manager/manage-workers',
+                href: '/manager/manage-workers',
                 title: "Manage Workers",
                 label: "",
                 icon: <TbUsers size={18} />,
               },
               // {
-              //   href: '/dashboard/manager/profile',
+              //   href: '/manager/profile',
               //   title: "Manager Profile",
               //   label: "",
               //   icon: <TbUserCircle size={19} />,

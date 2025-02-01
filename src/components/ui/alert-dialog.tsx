@@ -139,7 +139,7 @@ export const AlertDialogClose = <T extends ValidComponent = "button"> (
 };
 
 export const AlertDialogAction = <T extends ValidComponent = "button"> (
-  props: PolymorphicProps<T, alertDialogCloseProps<T>> & Pick<typeof Button, 'variant'>,
+  props: PolymorphicProps<T, alertDialogCloseProps<T>> & Pick<ComponentProps<typeof Button>, 'variant'>,
 ) => {
   const [local, rest] = splitProps(props as alertDialogCloseProps, ["class"]);
 

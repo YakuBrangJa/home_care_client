@@ -8,27 +8,37 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@components/ui/dropdown-menu";
-import {faker} from "@faker-js/faker";
 import {A, useNavigate} from "@solidjs/router";
+import {useUser} from "@/context/user-context";
+import Avatar from "@/components/ui/avatar";
+import {createMemo} from "solid-js";
 
-const profile_pic = faker.image.avatar()
 
 const UserProfileMenu = () => {
 
   const navigate = useNavigate()
+  const user = useUser()
+
+  const username = createMemo(() => user?.profile().firstname + ' ' + user?.profile().lastname)
 
   return (
     <DropdownMenu placement="bottom-end">
       <DropdownMenuTrigger
         as={(props: DropdownMenuSubTriggerProps) => (
           <button {...props}>
-            <img src={profile_pic} alt="" class="w-10 aspect-square rounded-full border border-gray-200" />
+            <Avatar name={username()} />
           </button>
         )}
       />
       <DropdownMenuContent class="w-56">
         <DropdownMenuGroup>
-          <DropdownMenuGroupLabel>My Account</DropdownMenuGroupLabel>
+          <DropdownMenuGroupLabel class="flex items-center gap-3">
+            <Avatar name={username()} size={45} />
+            <div>
+              <div>{username()}</div>
+              <div class="text-xs font-light">{user?.profile().email}</div>
+            </div>
+          </DropdownMenuGroupLabel>
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={() => navigate('/user/profile')}>
             <i class="i-lucide:user mr-2" />
@@ -38,13 +48,12 @@ const UserProfileMenu = () => {
             <i class="i-lucide:credit-card mr-2" />
             <span>Service history</span>
           </DropdownMenuItem>
-          {/* <DropdownMenuItem>
-            <i class="i-lucide:settings mr-2" />
-            <span>Settings</span>
-          </DropdownMenuItem> */}
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
+        <DropdownMenuItem onClick={() => {
+          user?.setIsLoggedin(false)
+          navigate('/user/signin')
+        }}>
           <i class="i-lucide:log-out mr-2" />
           <span>Log out</span>
         </DropdownMenuItem>

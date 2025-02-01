@@ -1,4 +1,3 @@
-import {type} from "os"
 
 export type ServiceType = 'gardening' | 'carpentry' | 'plumbing' | 'electrical' | 'cleaning'
 
@@ -19,7 +18,7 @@ export interface Service {
   assignedTime?: Date,
   endTime?: Date,
   customerInfo: CustomerInfo
-  assignedWorkers: Worker[]
+  assignedWorkers?: Worker[]
   manager?: {
     _id: string,
     name: string,
