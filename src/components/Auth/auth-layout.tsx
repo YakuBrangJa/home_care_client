@@ -10,16 +10,8 @@ interface Props extends ParentProps {
 
 const AuthLayout = (props: Props) => {
   return (
-    <div class="container relative h-[100vh] flex-col items-center justify-center grid lg:max-w-none lg:grid-cols-2 lg:px-0">
-      <a
-        href="/examples/authentication"
-        class={cn(
-          buttonVariants({variant: "ghost"}),
-          "absolute right-4 top-4 md:right-8 md:top-8",
-        )}
-      >
-        Login
-      </a>
+    <div class="container h-[100vh] flex-col items-center justify-center grid lg:max-w-none lg:grid-cols-2 lg:px-0">
+
       <div class="relative hidden h-full flex-col bg-muted p-10 text-white dark:border-r lg:flex">
         <div class="absolute inset-0 bg-primary" />
         <div class="relative z-20 flex items-center text-2xl font-bold">
@@ -28,11 +20,9 @@ const AuthLayout = (props: Props) => {
         <div class="relative z-20 mt-auto">
           <blockquote class="space-y-2">
             <p class="text-lg">
-              &ldquo;This library has saved me countless hours of work and
-              helped me deliver stunning designs to my clients faster than
-              ever before.&rdquo;
+              &ldquo;Expert home maintenance at your fingertips.&rdquo;
             </p>
-            <footer class="text-sm">Sofia Davis</footer>
+            <footer class="text-sm">Your Home Our Care</footer>
           </blockquote>
         </div>
       </div>

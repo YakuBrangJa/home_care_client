@@ -5,7 +5,8 @@ import {Resizable, ResizableHandle, ResizablePanel} from '@/components/ui/resiza
 import {Separator} from '@/components/ui/separator'
 import {cn} from '@/libs/cn'
 import {cookieStorage, makePersisted} from '@solid-primitives/storage'
-import {createSignal, ParentProps} from 'solid-js'
+import {useLocation} from '@solidjs/router'
+import {createSignal, ParentProps, Show} from 'solid-js'
 
 function Layout (props: ParentProps) {
   const [sizes, setSizes] = makePersisted(createSignal<number[]>([]), {
@@ -15,10 +16,16 @@ function Layout (props: ParentProps) {
       path: "/",
     },
   });
+  const location = useLocation()
+
 
   const [isCollapsed, setIsCollapsed] = createSignal(false);
 
   return (
+    <Show
+      when={location.pathname !== '/manager/login'}
+      fallback={props.children}
+    >
     <div>
       <Resizable sizes={sizes()} onSizesChange={setSizes}>
         <ResizablePanel
@@ -39,7 +46,7 @@ function Layout (props: ParentProps) {
           <Separator />
           {/* <AccountSwitcher isCollapsed={false} /> */}
           <div class='px-4 py-2'>
-            <ProfileMenu />
+              <ProfileMenu name={'Mike Wood'} role='Manager' />
           </div>
           <SideNav
             isCollapsed={false}
@@ -75,6 +82,7 @@ function Layout (props: ParentProps) {
         </ResizablePanel>
       </Resizable>
     </div>
+    </Show>
   )
 }
 

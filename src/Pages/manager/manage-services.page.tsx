@@ -7,8 +7,10 @@ import {createMemo, For, onMount} from "solid-js";
 import {Service} from "@/types/app.type";
 import utils from "@/utils/utils";
 import ServiceHistoryTable from "@/components/Dashboard/Manager/service-history-table.manager";
+import {service_requests_1} from "@/data/service_requests_1";
 
-const serviceRequests = Array.from({length: 100}, createRandomServiceRequests);
+// const serviceRequests = Array.from({length: 100}, createRandomServiceRequests);
+const serviceRequests = service_requests_1
 
 type GroupedServices = {
   pending: Service[],

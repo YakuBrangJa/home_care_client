@@ -6,7 +6,7 @@ import {Separator} from "@/components/ui/separator"
 import {TextArea} from "@/components/ui/textarea"
 import {TextField, FieldLabel, TextFieldRoot, FieldErrorMessage} from "@/components/ui/textfield"
 import {Service, ServiceType, Urgency} from "@/types/app.type"
-import {SERVICE_TYPES, URGENCY_LIST} from "@/utils/const"
+import {SERVICE_PRICES, SERVICE_TYPES, URGENCY_LIST} from "@/utils/const"
 import {ServiceIcons} from "@/utils/consts"
 import {format} from "date-fns"
 import {TbBan, TbCalendarEvent, TbCircleCheck, TbFlag3, TbSend, TbTool} from "solid-icons/tb"
@@ -14,20 +14,9 @@ import {createSignal, For, JSX, Setter, Show} from "solid-js"
 import {Dynamic} from "solid-js/web"
 import {createForm} from '@tanstack/solid-form'
 import {faker} from "@faker-js/faker"
-import CancelAlertDialog from "@/components/ui/cancel-alert-dialog"
+import CancelAlertDialog from "@/components/ui/confirm-alert-dialog"
 
 type ServiceRequest = Omit<Service, 'customerInfo'>
-
-const default_form = {
-  _id: faker.string.uuid(),
-  status: 'pending',
-  requestTime: new Date(),
-  assignedWorkers: [],
-  subject: faker.lorem.sentence(),
-  serviceType: 'carpentry',
-  urgency: 'medium',
-  description: faker.lorem.sentence({min: 20, max: 40}),
-}
 
 function RequestServicePage () {
   const [service, setService] = createSignal<ServiceRequest | null>(null)
@@ -74,6 +63,8 @@ const ServiceRequestForm = (props: {
     e.stopPropagation()
     form.handleSubmit()
   }
+
+  const selectedService = form.useStore(state => state.values.serviceType)
 
   return (
     <form class="p-4" onSubmit={submitHandler}>
@@ -127,7 +118,7 @@ const ServiceRequestForm = (props: {
                 <FieldLabel for={field().name} class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                   Service
                 </FieldLabel>
-                <SelectTrigger>
+                <SelectTrigger class="mt-1.5">
                   <SelectValue<string>>
                     {(state) => state.selectedOption()}
                   </SelectValue>
@@ -139,6 +130,13 @@ const ServiceRequestForm = (props: {
               </Select>
             )}
           </form.Field>
+          <Show
+            when={selectedService()}
+          >
+            <div class="rounded-sm bg-primary/20 p-2 px-3 text-sm">
+              Base price: <b>{SERVICE_PRICES[selectedService()]}</b> BAHT
+            </div>
+          </Show>
         </div>
         <div class="grid gap-2">
           <form.Field
@@ -163,7 +161,7 @@ const ServiceRequestForm = (props: {
                 <FieldLabel for={field().name} class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                   Urgency
                 </FieldLabel>
-                  <SelectTrigger>
+                <SelectTrigger class="mt-1.5">
                     <SelectValue<string>>
                       {(state) => state.selectedOption()}
                     </SelectValue>

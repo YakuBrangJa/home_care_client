@@ -23,7 +23,7 @@ interface Props extends ComponentProps<typeof Button> {
   onConfirm?: JSX.EventHandler<HTMLButtonElement, MouseEvent>
 }
 
-const CancelAlertDialog = (props: Props) => {
+const ConfirmAlertDialog = (props: Props) => {
   const [local, rest] = splitProps(props, ['class'])
 
   return (
@@ -50,4 +50,4 @@ const CancelAlertDialog = (props: Props) => {
   );
 };
 
-export default CancelAlertDialog;
+export default ConfirmAlertDialog;

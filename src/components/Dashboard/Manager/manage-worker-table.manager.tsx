@@ -56,6 +56,7 @@ import {SERVICE_TYPES, WORKER_STATUS_LIST} from "@/utils/const";
 import utils, {matchSubString} from "@/utils/utils";
 import {generateRandomWorker} from "@/libs/faker";
 import {ColumnFilter, TableColumnHeader} from "@/components/Dashboard/table-controls";
+import Avatar from "@/components/ui/avatar";
 
 const data = Array.from({length: 25}, generateRandomWorker);
 
@@ -79,7 +80,8 @@ const columns: ColumnDef<Worker>[] = [
     ),
     cell: (props) => (
       <div class="flex gap-3 items-center">
-        <img src={props.row.original.profileImgUrl} class="rounded-full border size-[35px]" />
+        {/* <img src={props.row.original.profileImgUrl} class="rounded-full border size-[35px]" /> */}
+        <Avatar name={props.row.getValue('firstname') + ' ' + (props.row.original.lastname)} size={35} />
         <span class="w-[250px] truncate font-medium">
           {props.row.getValue("firstname")} {props.row.original.lastname}
         </span>

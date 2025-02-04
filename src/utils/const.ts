@@ -13,3 +13,11 @@ export const URGENCY_COLOR = {
   medium: '#AF7AC5',
   high: '#E74C3C'
 }
+
+export const SERVICE_PRICES = {
+  gardening: 1000,
+  carpentry: 1100,
+  plumbing: 800,
+  electrical: 800,
+  cleaning: 600,
+}

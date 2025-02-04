@@ -2,11 +2,13 @@ import TaskDetailPanel from "@/components/Dashboard/Worker/task-detail-panel";
 import TaskCard from "@/components/Dashboard/Worker/task-list-card";
 import {Resizable, ResizableHandle, ResizablePanel} from "@/components/ui/resizable";
 import {WorkerTaskProvider} from "@/context/worker-dashboard.contex";
+import {worker_task_1} from "@/data/worker_task_1";
 import {createRandomServiceRequests} from "@/libs/faker";
 import {cookieStorage, makePersisted} from "@solid-primitives/storage";
 import {createSignal, For} from "solid-js";
 
-const tasks = Array.from({length: 10}, createRandomServiceRequests);
+// const tasks = Array.from({length: 10}, createRandomServiceRequests);
+const tasks = worker_task_1 
 
 function Tasks () {
   const [sizes, setSizes] = makePersisted(createSignal<number[]>([]), {

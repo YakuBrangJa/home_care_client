@@ -33,7 +33,7 @@ const WorkerSignupModal = () => {
         as={(props: DialogTriggerProps) => (
           <Button {...props} class="gap-2 pl-3">
             <TbPlus size={16} />
-            Signup Worker
+            Register Worker
           </Button>
         )}
       />
@@ -50,11 +50,11 @@ const WorkerSignupForm = (props: {
 }) => {
 
   return (
-    <form>
+    <form autocomplete="off">
       <DialogHeader>
-        <DialogTitle>Signup Worker</DialogTitle>
+        <DialogTitle>Register Worker</DialogTitle>
       </DialogHeader>
-      <div class="mt-6 grid gap-3">
+      {/* <div class="mt-6 grid gap-3">
         <Label>Profile picture</Label>
         <div class="flex items-center gap-4">
           <img src="" class="size-[5rem] rounded-full border" />
@@ -64,7 +64,7 @@ const WorkerSignupForm = (props: {
             Upload photo
           </label>
         </div>
-      </div>
+      </div> */}
       <div class="mt-6 grid gap-6">
         <div class="grid grid-cols-2 gap-4">
           <TextFieldRoot class="">
@@ -104,18 +104,26 @@ const WorkerSignupForm = (props: {
             <SelectContent />
           </Select>
         </div>
-        <div class="grid gap-2">
+        <TextFieldRoot>
+          <FieldLabel>Password</FieldLabel>
+          <TextField type="password" placeholder="Password" autocomplete="new-password" />
+        </TextFieldRoot>
+        <TextFieldRoot>
+          <FieldLabel>Confirm password</FieldLabel>
+          <TextField type="password" placeholder="" autocomplete="new-password" />
+        </TextFieldRoot>
+        {/* <div class="grid gap-2">
           <TextFieldRoot>
             <FieldLabel>Address</FieldLabel>
             <TextArea placeholder="Your full address" />
           </TextFieldRoot>
-        </div>
+        </div> */}
       </div>
-      <DialogFooter class="mt-6">
+      <DialogFooter class="mt-8">
         <Button class="w-full" variant="secondary"
           onClick={() => props.setIsOpen(false)}
         >Cancel</Button>
-        <Button class="w-full">Signup</Button>
+        <Button class="w-full">Register</Button>
       </DialogFooter>
     </form>
   );

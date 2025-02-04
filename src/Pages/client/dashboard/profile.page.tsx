@@ -41,12 +41,13 @@ function ProfilePage () {
     form.handleSubmit()
   }
 
+
   return (
     <div>
       <div class="h-[8rem] relative">
         {/* <img src={profile_pic} class="absolute w-[7rem] aspect-square border border-gray-300 rounded-full left-8 -bottom-10 bg-white" /> */}
         <div class="absolute left-8 -bottom-10">
-          <Avatar name={user?.profile().firstname + ' ' + user?.profile().lastname} size={110} class="border-2 border-gray-200 rounded-2xl" />
+          <Avatar name={user?.profile().firstname + ' ' + user?.profile().lastname} size={110} class="border-2 border-gray-200 rounded-full" />
         </div>
       </div>
       <Separator />

@@ -1,8 +1,9 @@
 import AuthLayout from '@/components/Auth/auth-layout'
-import {Button} from '@/components/ui/button'
+import {Button, buttonVariants} from '@/components/ui/button'
 import {FieldLabel, TextField, TextFieldRoot} from '@/components/ui/textfield'
 import {useUser} from '@/context/user-context'
-import {useNavigate, useParams, useLocation} from '@solidjs/router'
+import {cn} from '@/libs/cn'
+import {useNavigate, useParams, useLocation, A} from '@solidjs/router'
 import {createSignal} from 'solid-js'
 
 function SignInPage () {
@@ -13,9 +14,18 @@ function SignInPage () {
 
   return (
     <AuthLayout
-      title='Sign In'
-      description='Enter your email and password below to sign in.'
+      title='Login to Homecare'
+      description='Enter your email and password below to login.'
     >
+      <A
+        href="/user/sign-up"
+        class={cn(
+          buttonVariants({variant: "ghost"}),
+          "absolute right-4 top-4 md:right-8 md:top-8",
+        )}
+      >
+        Sign Up
+      </A>
       <div class="grid gap-6">
         <form>
           <div class="grid gap-2">
@@ -68,10 +78,28 @@ function SignInPage () {
                   <title>Loading</title>
                 </svg>
               )}
-              Sign In
+              Login
             </Button>
           </div>
         </form>
+        <div class="relative">
+          <div class="absolute inset-0 flex items-center">
+            <span class="w-full border-t" />
+          </div>
+          <div class="relative flex justify-center text-xs">
+            <span class="bg-background px-2 text-muted-foreground">
+              Does not have an account yet?
+            </span>
+          </div>
+        </div>
+        <A
+          href="/user/sign-up"
+          class={cn(
+            buttonVariants({variant: "outline"}),
+          )}
+        >
+          Sign Up here
+        </A>
         {/* <div class="relative">
           <div class="absolute inset-0 flex items-center">
             <span class="w-full border-t" />

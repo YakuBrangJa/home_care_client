@@ -61,30 +61,39 @@ import {ServiceIcons} from "@/utils/consts";
 import {Dynamic} from "solid-js/web";
 import {SERVICE_TYPES, STATUS_LIST, URGENCY_LIST} from "@/utils/const";
 import utils from "@/utils/utils";
-import {createRandomServiceRequests} from "@/libs/faker";
 import {ColumnFilter, TableColumnHeader} from "@/components/Dashboard/table-controls";
 import ServiceHistorySheet from "@/components/Dashboard/Manager/service-history-sheet.manager";
+import {services_completed_1} from "@/data/service_completed_1";
 
 
 const columns: ColumnDef<Service>[] = [
+  // {
+  //   id: 'service',
+  //   accessorKey: "service",
+  //   header: (props) => <TableColumnHeader column={props.column} table={props.table} title="Service" />,
+  //   cell: (props) => (
+  //     <div class="">
+  //       <Badge variant="outline" class="pl-2">
+  //         <span class="text-gray-600">
+  //           <Dynamic component={ServiceIcons[props.row.original.serviceType]} />
+  //         </span>
+  //         {props.row.original.serviceType}
+  //       </Badge>
+  //     </div>
+  //   ),
+  //   filterFn: (row, id, value) => {
+  //     return Array.isArray(value) && value.includes(row.getValue(id));
+  //   },
+  //   enableSorting: false,
+  // },
   {
-    id: 'label',
-    accessorKey: "label",
-    header: (props) => <TableColumnHeader column={props.column} table={props.table} title="Label" />,
+    id: 'request-date',
+    accessorKey: "time",
+    enableHiding: true,
+    header: (props) => <TableColumnHeader column={props.column} table={props.table} title="Request Date" />,
     cell: (props) => (
-      <div class="">
-        <Badge variant="outline" class="pl-2">
-          <span class="text-gray-600">
-            <Dynamic component={ServiceIcons[props.row.original.serviceType]} />
-          </span>
-          {props.row.original.serviceType}
-        </Badge>
-      </div>
+      <div class="w-[100px] text-gray-600">{format(props.row.original.requestTime, "MMM dd, yyyy")}</div>
     ),
-    filterFn: (row, id, value) => {
-      return Array.isArray(value) && value.includes(row.getValue(id));
-    },
-    enableSorting: false,
   },
   {
     accessorKey: "subject",
@@ -105,7 +114,7 @@ const columns: ColumnDef<Service>[] = [
     accessorKey: "time",
     header: (props) => <TableColumnHeader column={props.column} table={props.table} title="Assigned Date" />,
     cell: (props) => (
-      <div class="w-[100px] text-gray-600">{format(props.row.original.assignedTime, "MMM dd, yyyy")}</div>
+      <div class="w-[100px] text-gray-600">{format(props.row.original.assignedTime || new Date(), "MMM dd, yyyy")}</div>
     ),
   },
   {
@@ -193,7 +202,8 @@ const columns: ColumnDef<Service>[] = [
 ];
 
 
-const data = Array.from({length: 100}, createRandomServiceRequests).filter(service => service.status === 'completed' || service.status === 'cancelled');
+// const data = Array.from({length: 100}, createRandomServiceRequests).filter(service => service.status === 'completed' || service.status === 'cancelled');
+const data = services_completed_1 
 
 const TaskHistoryTable = () => {
   // const [rowSelection, setRowSelection] = createSignal({});
@@ -260,7 +270,7 @@ const TaskHistoryTable = () => {
               }
             />
           </TextFieldRoot>
-          <ColumnFilter columnName="label" buttonLabel="Service" options={SERVICE_TYPES} table={table} />
+          {/* <ColumnFilter columnName="service" buttonLabel="Service" options={SERVICE_TYPES} table={table} /> */}
           <ColumnFilter columnName="urgency" buttonLabel="Urgency" options={URGENCY_LIST} table={table} />
           <ColumnFilter columnName="status" buttonLabel="Status" options={STATUS_LIST.filter(v => v === 'completed' || v === 'cancelled')} table={table} />
         </div>

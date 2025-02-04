@@ -11,23 +11,25 @@ import {
 } from "@components/ui/dropdown-menu";
 import {Button} from "@kobalte/core/button";
 import {TbSelector} from "@/components/icons/Tabler.icons";
+import Avatar from "@/components/ui/avatar";
 
 interface Props {
   name: string,
   role: string,
-  profileImgUrl: string,
+  profileImgUrl?: string,
 }
 
 const ProfileMenu = (props: Props) => {
   return (
     <DropdownMenu placement="bottom-start">
       <DropdownMenuTrigger
-        as={(props: DropdownMenuSubTriggerProps) => (
-          <Button {...props} class="border bg-white rounded-md px-2 flex items-center h-[3rem] w-full text-sm gap-2">
-            <img src="" class="rounded-full size-[35px] border" />
+        as={(triggerProps: DropdownMenuSubTriggerProps) => (
+          <Button {...triggerProps} class="border bg-white rounded-md px-2 flex items-center h-[3.5rem] w-full text-sm gap-2">
+            {/* <img src="" class="rounded-full size-[35px] border" /> */}
+            <Avatar name={props.name} size={37} />
             <div class="flex flex-col items-start flex-1">
-              <span class="text-[0.85rem] font-medium">Mr Rajs das</span>
-              <span class="text-xs text-muted-foreground">Manager</span>
+              <span class="text-[0.85rem] font-medium">{props.name}</span>
+              <span class="text-xs text-muted-foreground">{props.role}</span>
             </div>
             <TbSelector size={18} class="self-end" />
           </Button>

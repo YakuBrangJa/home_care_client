@@ -64,13 +64,14 @@ import utils from "@/utils/utils";
 import {createRandomServiceRequests} from "@/libs/faker";
 import {ColumnFilter, TableColumnHeader} from "@/components/Dashboard/table-controls";
 import ServiceHistorySheet from "@/components/Dashboard/Manager/service-history-sheet.manager";
+import {services_completed_1} from "@/data/service_completed_1";
 
 
 const columns: ColumnDef<Service>[] = [
   {
-    id: 'label',
-    accessorKey: "label",
-    header: (props) => <TableColumnHeader column={props.column} table={props.table} title="Label" />,
+    id: 'service',
+    accessorKey: "serviceType",
+    header: (props) => <TableColumnHeader column={props.column} table={props.table} title="Service" />,
     cell: (props) => (
       <div class="">
         <Badge variant="outline" class="pl-2">
@@ -193,7 +194,8 @@ const columns: ColumnDef<Service>[] = [
 ];
 
 
-const data = Array.from({length: 100}, createRandomServiceRequests).filter(service => service.status === 'completed' || service.status === 'cancelled');
+// const data = Array.from({length: 100}, createRandomServiceRequests).filter(service => service.status === 'completed' || service.status === 'cancelled');
+const data = services_completed_1
 
 const ServiceHistoryTable = () => {
   // const [rowSelection, setRowSelection] = createSignal({});
@@ -260,7 +262,7 @@ const ServiceHistoryTable = () => {
               }
             />
           </TextFieldRoot>
-          <ColumnFilter columnName="label" buttonLabel="Service" options={SERVICE_TYPES} table={table} />
+          <ColumnFilter columnName="service" buttonLabel="Service" options={SERVICE_TYPES} table={table} />
           <ColumnFilter columnName="urgency" buttonLabel="Urgency" options={URGENCY_LIST} table={table} />
           <ColumnFilter columnName="status" buttonLabel="Status" options={STATUS_LIST.filter(v => v === 'completed' || v === 'cancelled')} table={table} />
         </div>

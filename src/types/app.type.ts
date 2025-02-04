@@ -18,12 +18,13 @@ export interface Service {
   assignedTime?: Date,
   endTime?: Date,
   customerInfo: CustomerInfo
-  assignedWorkers?: Worker[]
+  assignedWorkers?: AssignedWorker[]
   manager?: {
     _id: string,
     name: string,
     role?: string,
   },
+  managerInstruction?: string
 }
 
 export type CustomerInfo = {
@@ -46,4 +47,12 @@ export type Worker =  {
   profileImgUrl: string,
   expertise: ServiceType
   status: WorkerStatus
+}
+
+export type AssignedWorker = {
+  _id: string,
+  firstname: string,
+  lastname: string,
+  phone: string,
+  email: string,
 }

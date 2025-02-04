@@ -1,4 +1,5 @@
 import {Badge} from "@/components/ui/badge";
+import {customer_history_1} from "@/data/customer_history_1";
 import {cn} from "@/libs/cn";
 import {createRandomServiceRequests} from "@/libs/faker";
 import {ServiceIcons} from "@/utils/consts";
@@ -6,7 +7,8 @@ import {format} from "date-fns";
 import {For} from "solid-js";
 import {Dynamic} from "solid-js/web";
 
-const data = Array.from({length: 10}, createRandomServiceRequests).filter(service => service.status === 'completed' || service.status === 'cancelled');
+// const data = Array.from({length: 10}, createRandomServiceRequests).filter(service => service.status === 'completed' || service.status === 'cancelled');
+const data = customer_history_1
 
 function ClientServiceHistory () {
   return (

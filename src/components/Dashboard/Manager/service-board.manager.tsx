@@ -51,7 +51,7 @@ export function Card (props: ParentProps<{
       <button
         type="button"
         class={cn(
-          "flex flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm shadow-sm transition-all hover:bg-accent",
+          "flex w-full flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm shadow-sm transition-all hover:bg-accent",
           isOpen() && "bg-muted",
         )}
         onClick={e => setIsOpen(true)}
