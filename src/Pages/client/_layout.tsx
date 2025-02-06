@@ -55,7 +55,7 @@ const NavAuthSection = () => {
       fallback={
         <div class="flex gap-3">
           <A href="/user/signin" class={buttonVariants({variant: 'outline'})}>Login</A>
-          <A href="/user/signup" class={buttonVariants()}>Signup</A>
+          <A href="/user/sign-up" class={buttonVariants()}>Signup</A>
         </div>
       }
     >

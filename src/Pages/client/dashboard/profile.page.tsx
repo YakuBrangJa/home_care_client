@@ -4,6 +4,7 @@ import {Separator} from "@/components/ui/separator"
 import {TextArea} from "@/components/ui/textarea"
 import {TextField, FieldLabel, TextFieldRoot, FieldErrorMessage} from "@/components/ui/textfield"
 import {Profile, useUser} from "@/context/user-context"
+import {getUsers, queryClient} from "@/query"
 import {createForm} from "@tanstack/solid-form"
 import {BsPen, BsPencil} from "solid-icons/bs"
 import {FiSave} from "solid-icons/fi"
@@ -20,6 +21,12 @@ type ProfileForm = {
 function ProfilePage () {
   const [isEditing, setIsEditing] = createSignal(false)
   const user = useUser()
+
+  // const state = getUsers()
+
+  // createEffect(() => {
+  //   console.log(state.data)
+  // })
 
   const form = createForm<ProfileForm>(() => ({
     defaultValues: {
